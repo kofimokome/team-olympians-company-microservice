@@ -2,7 +2,7 @@
 FROM python:alpine3.7
 
 ENV PYTHONDONTWRITEBYTECODE 1
-ENV FLASK_APP "app.py"
+# ENV FLASK_APP "app.py"
 ENV FLASK_ENV "development"
 ENV FLASK_DEBUG True
 
