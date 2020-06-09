@@ -1,4 +1,3 @@
-
 {
   "openapi": "3.0.0",
   "info": {
@@ -11,6 +10,158 @@
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "_comment": "THIS IS THE SWAGGER DOCUMENTATION FOR THE COMPANY API",
+      "name": "Company API",
+      "description": "API for creating, requesting and returning companies"
+    }
+  ],
+  "paths": {
+    "/companies": {
+      "get": {
+        "tags": [
+          "Company Request"
+        ],
+        "summary": "Returns all companies",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/companies"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Company Request"
+        ],
+        "summary": "Create a new company",
+        "requestBody": {
+          "description": "Company Request Post Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/company"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/companies/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of the company",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Company Request"
+        ],
+        "summary": "Returns a particular company",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/company"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Company Request"
+        ],
+        "summary": "Updates a company",
+        "requestBody": {
+          "description": "Company Request Post Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/company"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "id": {
+        "properties": {
+          "uuid": {
+            "type": "string"
+          }
+        }
+      },
+      "company": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      },
+      "companies": {
+        "type": "object",
+        "properties": {
+          "company": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/company"
+            }
+          }
+        }
+      }
     }
   }
 }
