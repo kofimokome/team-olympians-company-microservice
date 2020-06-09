@@ -11,9 +11,11 @@ def index():
         return {'message': 'ok', 'method': 'GET'}
 
 
-@companies.route('/<int:id>', methods=['GET', 'PUT'])
+@companies.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def create(id):
     if request.method == 'POST':
         return {'message': 'ok', 'method': 'POST'}
+    elif request.method == 'DELETE':
+        return {'message': 'ok', 'method': 'DELETE'}
     else:
         return {'message': 'ok', 'method': 'GET'}
