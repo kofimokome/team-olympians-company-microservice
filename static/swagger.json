@@ -1,0 +1,16 @@
+
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Team Olympian Task 2",
+    "version": "1.0.0",
+    "title": "Team Olympian Task 2",
+    "contact": {
+      "email": "team@localhost.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  }
+}
