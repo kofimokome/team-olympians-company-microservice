@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 
 from flask_swagger_ui import get_swaggerui_blueprint
 
@@ -9,8 +9,8 @@ app = Flask(__name__)
 app.register_blueprint(companies, url_prefix='/companies')
 
 @app.route('/')
-def hello():
-    return "Hello World!"
+def home():
+    return redirect(url_for('swagger_ui.show'))
 
 
 SWAGGER_URL = '/swagger'
